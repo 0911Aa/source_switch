@@ -42,7 +42,7 @@ class Run:
 if __name__ == "__main__":
     run = Run()
     run.init_env()
-    pytest.main(["-s","--reruns=2", project_path+"/src/testcases","--alluredir="+project_path+"/data"])
+    pytest.main(["-s", project_path+"/src/testcases","--alluredir="+project_path+"/data","-m=P1"])
     server = Server()
     server.kill_server()
     # run.init_report()
