@@ -19,7 +19,7 @@ def teardown_module(module):
 @pytest.mark.P1
 @pytest.mark.run(order=1)
 @allure.feature('source切换测试')
-@pytest.mark.repeat(5)
+# @pytest.mark.repeat(5)
 class Test_G6SA_source_switch:
 
     def setup_class(cls):
