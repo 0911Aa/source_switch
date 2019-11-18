@@ -114,6 +114,9 @@ class ElementActions:
     def home(self):
         self.driver.keyevent(3)
 
+    def valueup(self):
+        self.driver.keyevent(24)
+
     def swipe_up(self,t=500):
         x1 = self.width * 0.8  # x坐标
         y1 = self.height * 0.65  # 起点y坐标
