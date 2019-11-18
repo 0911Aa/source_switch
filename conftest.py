@@ -65,6 +65,5 @@ def pytest_runtest_makereport(item, call):
         logcat = Action.driver.get_log('logcat')
         c = '\n'.join([i['message'] for i in logcat])
         allure.attach(c, 'APPlog', allure.attachment_type.TEXT)
-        print("case fail...")
         # if Action.get_app_pid() != Action.apppid:
         #     raise Exception('设备进程 ID 变化，可能发生崩溃')
