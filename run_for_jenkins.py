@@ -24,8 +24,6 @@ class Run:
         subprocess.call(cmd2, shell=True)
         server = Server()
         server.main()
-
-
     #     cmd = "python -m uiautomator2 init"
     #     subprocess.call(cmd, shell=True)
     #     logger.info("初始化运行环境!")
@@ -37,6 +35,10 @@ class Run:
         project_path = os.path.abspath(os.path.dirname(__file__))
         report_path = project_path + "/reports/" + "index.html"
         print("报告地址:{}".format(report_path))
+
+    def get_batch_size(self):
+        test_times = sys.argv
+        print("test_times",test_times)
 
 
 if __name__ == "__main__":
