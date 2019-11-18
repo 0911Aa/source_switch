@@ -52,6 +52,7 @@ def pytest_runtest_makereport(item, call):
     outcome = yield
     rep = outcome.get_result()
     if rep.when == "call" and rep.failed:
+        print("case fail...")
         f = Action.driver.get_screenshot_as_png()
         # a = r"/labview_file/2019-10-28-15-45-57.wav"
         # a = '<a href="#">路径</a>
