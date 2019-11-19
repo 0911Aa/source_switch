@@ -103,7 +103,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("蓝牙声音输出异常")
         # self.Action.find_element('USB_vedio', "音乐栏").click()
         self.Action.find_element("BT_next","蓝牙下一曲").click()
@@ -114,7 +113,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换下一曲后，蓝牙声音输出异常")
 
 
@@ -126,7 +124,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("USB音乐声音输出异常")
         logging_save.logging.info('检查车机输出...')
         self.Action.find_element("USB_next", "USB下一曲").click()
@@ -136,7 +133,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换下一曲后，USB音乐声音输出异常")
 
         self.USB_vedio_switch()
@@ -147,7 +143,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("USB视频声音输出异常")
         logging_save.logging.info('检查车机输出...')
         self.Action.find_element("vedio_name_2", "第二个视频").click()
@@ -157,7 +152,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换曲目后，USB视频声音输出异常")
         logging_save.logging.info('检查车机输出...')
         self.Action.find_element("vedio_name_1", "第一个视频").click()
@@ -167,7 +161,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换曲目后，USB视频声音输出异常")
         # os.system('adb -s 0000 shell input tap 77 153')
         # self.driver.tap([(77, 153)], 1)
@@ -178,8 +171,9 @@ class Test_G6SA_source_switch:
         self.track_check('FM ', '8')
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
-            pass
+            print("case pass...")
         else:
+            print("case pass...")
             logging_save.logging.info(self.readfile(1))
             # raise Exception("声音输出异常")
 
@@ -193,7 +187,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("USB音乐声音输出异常")
         self.Action.find_element("USB_next", "USB下一曲").click()
         logging_save.logging.info('检查车机输出...')
@@ -203,7 +196,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换下一曲后，USB音乐声音输出异常")
 
         self.BT_switch()
@@ -214,7 +206,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("蓝牙声音输出异常")
         self.Action.find_element("BT_next","蓝牙下一曲").click()
         logging_save.logging.info('检查车机输出...')
@@ -224,7 +215,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换下一曲后，蓝牙声音输出异常")
 
         self.USB_vedio_switch()
@@ -235,7 +225,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("USB视频声音输出异常")
         self.Action.find_element("vedio_name_2", "第二个视频").click()
         logging_save.logging.info('检查车机输出...')
@@ -245,7 +234,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换曲目后，USB视频声音输出异常")
         self.Action.find_element("vedio_name_1", "第一个视频").click()
         logging_save.logging.info('检查车机输出...')
@@ -255,7 +243,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换曲目后，USB视频声音输出异常")
         # os.system('adb -s 0000 shell input tap 77 153')
         # # self.driver.tap([(77, 153)], 1)
@@ -266,8 +253,9 @@ class Test_G6SA_source_switch:
         self.track_check('FM ', '8')
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
-            pass
+            print("case pass...")
         else:
+            print("case pass...")
             logging_save.logging.info(self.readfile(1))
             # raise Exception("声音输出异常")
 
@@ -281,7 +269,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("USB音乐声音输出异常")
         self.Action.find_element("USB_next", "USB下一曲").click()
         logging_save.logging.info('检查车机输出...')
@@ -291,7 +278,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换下一曲后，USB音乐声音输出异常")
 
         self.FM_switch()
@@ -312,7 +298,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("蓝牙声音输出异常")
         self.Action.find_element("BT_next","蓝牙下一曲").click()
         logging_save.logging.info('检查车机输出...')
@@ -322,7 +307,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换下一曲后，蓝牙声音输出异常")
 
         self.USB_vedio_switch()
@@ -333,7 +317,6 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("USB视频声音输出异常")
         self.Action.find_element("vedio_name_2", "第二个视频").click()
         logging_save.logging.info('检查车机输出...')
@@ -343,17 +326,15 @@ class Test_G6SA_source_switch:
             pass
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换曲目后，USB视频声音输出异常")
         self.Action.find_element("vedio_name_1", "第一个视频").click()
         logging_save.logging.info('检查车机输出...')
         self.track_check('USB_VEDIO ', '23')
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
-            pass
+            print("case pass...")
         else:
             logging_save.logging.info(self.readfile(1))
-            print("case fail...")
             raise Exception("切换曲目后，USB视频声音输出异常")
         # os.system('adb -s 0000 shell input tap 77 153')
         # # self.driver.tap([(77, 153)], 1)
