@@ -103,75 +103,70 @@ class Test_G6SA_source_switch:
         time.sleep(7)
         self.Action.find_element("BT_next","蓝牙下一曲").click()
         logging_save.logging.info('切换下一曲...')
-        time.sleep(8)
+        time.sleep(18)  #在当前source继续播放10s，避免频繁调用labview报错
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换下一曲后，蓝牙声音输出异常")
-        time.sleep(10)    #在当前source继续播放10s，避免频繁调用labview报错
 
         logging_save.logging.info('检查车机输出...')
         self.track_check('0800 ', '1000 ', '20 ', '1')
         time.sleep(10)
         self.USB_audio_switch()
-        time.sleep(10)
+        time.sleep(20)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("USB音乐声音输出异常")
-        time.sleep(10)
 
         logging_save.logging.info('检查车机输出...')
         self.track_check('1000 ', '1000 ', '22 ', '2')
         time.sleep(11)
         self.Action.find_element("USB_next", "USB下一曲").click()
         logging_save.logging.info('USB音乐切换下一曲...')
-        time.sleep(11)
+        time.sleep(21)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换下一曲后，USB音乐声音输出异常")
-        time.sleep(10)
 
         logging_save.logging.info('检查车机输出...')
         self.track_check('1000 ', '0400 ', '18 ', '0')
         time.sleep(9)
         self.USB_vedio_switch()
-        time.sleep(9)
+        time.sleep(19)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("USB视频声音输出异常")
-        time.sleep(10)
 
         logging_save.logging.info('检查车机输出...')
         self.track_check('0400 ', '0400 ', '16 ', '2')
         time.sleep(8)
         self.Action.find_element("vedio_name_2", "第二个视频").click()
         logging_save.logging.info('切换第二视频...')
-        time.sleep(8)
+        time.sleep(18)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换曲目后，USB视频声音输出异常")
-        time.sleep(10)
 
         logging_save.logging.info('检查车机输出...')
         self.track_check('0400 ', '0400 ', '22 ', '2')
         time.sleep(11)
         self.Action.find_element("vedio_name_1", "第一个视频").click()
         logging_save.logging.info('切换第一视频...')
-        time.sleep(11)
+        time.sleep(21)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
@@ -192,20 +187,15 @@ class Test_G6SA_source_switch:
             logging_save.logging.info(self.readfile(1))
             raise Exception("声音输出异常")
 
-    def case2(self):
+    def test_case2(self):
     # USB_audio--->BT--->USB_vedio--->FM
         self.USB_audio_switch()
         logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_AUDIO ', '13')
-        self.clearBlankLine()
-        if 'OK' in self.readfile(2):
-            pass
-        else:
-            logging_save.logging.info(self.readfile(1))
-            raise Exception("USB音乐声音输出异常")
+        self.track_check('1000 ', '1000 ', '22 ', '2')
+        time.sleep(11)
         self.Action.find_element("USB_next", "USB下一曲").click()
-        logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_AUDIO ', '20')
+        logging_save.logging.info('USB音乐切换下一曲...')
+        time.sleep(21)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
@@ -213,18 +203,24 @@ class Test_G6SA_source_switch:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换下一曲后，USB音乐声音输出异常")
 
-        self.BT_switch()
         logging_save.logging.info('检查车机输出...')
-        self.track_check('BT ', '11')
+        self.track_check('1000 ', '0800 ', '20 ', '1')
+        time.sleep(10)
+        self.BT_switch()
+        time.sleep(20)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("蓝牙声音输出异常")
-        self.Action.find_element("BT_next","蓝牙下一曲").click()
+
         logging_save.logging.info('检查车机输出...')
-        self.track_check('BT ', '10')
+        self.track_check('0800 ', '0800 ', '15 ', '1')
+        time.sleep(7)
+        self.Action.find_element("BT_next", "蓝牙下一曲").click()
+        logging_save.logging.info('切换下一曲...')
+        time.sleep(18)  # 在当前source继续播放10s，避免频繁调用labview报错
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
@@ -232,27 +228,37 @@ class Test_G6SA_source_switch:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换下一曲后，蓝牙声音输出异常")
 
-        self.USB_vedio_switch()
         logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_VEDIO ', '15')
+        self.track_check('0800 ', '0400 ', '18 ', '0')
+        time.sleep(9)
+        self.USB_vedio_switch()
+        time.sleep(19)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("USB视频声音输出异常")
-        self.Action.find_element("vedio_name_2", "第二个视频").click()
+
         logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_VEDIO ', '23')
+        self.track_check('0400 ', '0400 ', '16 ', '2')
+        time.sleep(8)
+        self.Action.find_element("vedio_name_2", "第二个视频").click()
+        logging_save.logging.info('切换第二视频...')
+        time.sleep(18)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换曲目后，USB视频声音输出异常")
-        self.Action.find_element("vedio_name_1", "第一个视频").click()
+
         logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_VEDIO ', '23')
+        self.track_check('0400 ', '0400 ', '22 ', '2')
+        time.sleep(11)
+        self.Action.find_element("vedio_name_1", "第一个视频").click()
+        logging_save.logging.info('切换第一视频...')
+        time.sleep(21)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
@@ -265,29 +271,24 @@ class Test_G6SA_source_switch:
 
         self.FM_switch()
         logging_save.logging.info('检查车机输出...')
-        self.track_check('FM ', '8')
+        self.track_check('0000 ', '400 ', '10 ', '1')
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             print("case pass...")
         else:
-            print("case pass...")
             logging_save.logging.info(self.readfile(1))
+            raise Exception("声音输出异常")
             # raise Exception("声音输出异常")
 
     def case3(self):
     #USB_audio--->FM--->BT--->USB_video
         self.USB_audio_switch()
         logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_AUDIO ', '13')
-        self.clearBlankLine()
-        if 'OK' in self.readfile(2):
-            pass
-        else:
-            logging_save.logging.info(self.readfile(1))
-            raise Exception("USB音乐声音输出异常")
+        self.track_check('1000 ', '1000 ', '22 ', '2')
+        time.sleep(11)
         self.Action.find_element("USB_next", "USB下一曲").click()
-        logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_AUDIO ', '20')
+        logging_save.logging.info('USB音乐切换下一曲...')
+        time.sleep(21)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
@@ -297,26 +298,22 @@ class Test_G6SA_source_switch:
 
         self.FM_switch()
         logging_save.logging.info('检查车机输出...')
-        self.track_check('FM ', '8')
+        self.track_check('0000 ', '400 ', '10 ', '1')
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
-            pass
+            print("case pass...")
         else:
             logging_save.logging.info(self.readfile(1))
+            raise Exception("声音输出异常")
             # raise Exception("声音输出异常")
 
         self.BT_switch()
         logging_save.logging.info('检查车机输出...')
-        self.track_check('BT ', '11')
-        self.clearBlankLine()
-        if 'OK' in self.readfile(2):
-            pass
-        else:
-            logging_save.logging.info(self.readfile(1))
-            raise Exception("蓝牙声音输出异常")
-        self.Action.find_element("BT_next","蓝牙下一曲").click()
-        logging_save.logging.info('检查车机输出...')
-        self.track_check('BT ', '10')
+        self.track_check('0800 ', '0800 ', '15 ', '1')
+        time.sleep(7)
+        self.Action.find_element("BT_next", "蓝牙下一曲").click()
+        logging_save.logging.info('切换下一曲...')
+        time.sleep(18)  # 在当前source继续播放10s，避免频繁调用labview报错
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
@@ -324,30 +321,40 @@ class Test_G6SA_source_switch:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换下一曲后，蓝牙声音输出异常")
 
-        self.USB_vedio_switch()
         logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_VEDIO ', '15')
+        self.track_check('0800 ', '0400 ', '18 ', '0')
+        time.sleep(9)
+        self.USB_vedio_switch()
+        time.sleep(19)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("USB视频声音输出异常")
-        self.Action.find_element("vedio_name_2", "第二个视频").click()
+
         logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_VEDIO ', '23')
+        self.track_check('0400 ', '0400 ', '16 ', '2')
+        time.sleep(8)
+        self.Action.find_element("vedio_name_2", "第二个视频").click()
+        logging_save.logging.info('切换第二视频...')
+        time.sleep(18)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
             pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换曲目后，USB视频声音输出异常")
-        self.Action.find_element("vedio_name_1", "第一个视频").click()
+
         logging_save.logging.info('检查车机输出...')
-        self.track_check('USB_VEDIO ', '23')
+        self.track_check('0400 ', '0400 ', '22 ', '2')
+        time.sleep(11)
+        self.Action.find_element("vedio_name_1", "第一个视频").click()
+        logging_save.logging.info('切换第一视频...')
+        time.sleep(21)
         self.clearBlankLine()
         if 'OK' in self.readfile(2):
-            print("case pass...")
+            pass
         else:
             logging_save.logging.info(self.readfile(1))
             raise Exception("切换曲目后，USB视频声音输出异常")
