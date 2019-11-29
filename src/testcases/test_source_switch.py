@@ -26,8 +26,10 @@ class Test_G6SA_source_switch:
     def setup_class(cls):
         print('设置初始化')
         cls.Action = DriverClient().Action
-        for i in range(20):
+        for i in range(30):
             cls.Action.valueup()
+        for i in range(10):
+            cls.Action.valuedown()
 
     def teardown(self):
         print("this case finishd")
