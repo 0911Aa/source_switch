@@ -188,7 +188,7 @@ class Test_G6SA_source_switch:
             raise Exception("声音输出异常")
 
     def test_case2(self):
-    # USB_audio--->BT--->USB_vedio--->FM
+        # USB_audio--->BT--->USB_vedio--->FM
         self.USB_audio_switch()
         logging_save.logging.info('检查车机输出...')
         self.track_check('1000 ', '1000 ', '22 ', '2')
@@ -229,7 +229,7 @@ class Test_G6SA_source_switch:
             raise Exception("切换下一曲后，蓝牙声音输出异常")
 
         logging_save.logging.info('检查车机输出...')
-        self.track_check('0800 ', '0400 ', '18 ', '0')
+        self.track_check('0800 ', '0400 ', '18 ', '1')
         time.sleep(9)
         self.USB_vedio_switch()
         time.sleep(19)
@@ -280,7 +280,7 @@ class Test_G6SA_source_switch:
             raise Exception("声音输出异常")
             # raise Exception("声音输出异常")
 
-    def case3(self):
+    def test_case3(self):
     #USB_audio--->FM--->BT--->USB_video
         self.USB_audio_switch()
         logging_save.logging.info('检查车机输出...')
@@ -322,7 +322,7 @@ class Test_G6SA_source_switch:
             raise Exception("切换下一曲后，蓝牙声音输出异常")
 
         logging_save.logging.info('检查车机输出...')
-        self.track_check('0800 ', '0400 ', '18 ', '0')
+        self.track_check('0800 ', '0400 ', '18 ', '1')
         time.sleep(9)
         self.USB_vedio_switch()
         time.sleep(19)
