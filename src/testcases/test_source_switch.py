@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import pytest,time,allure,os,subprocess
 from sources.get_driver import DriverClient
 from logs import logging_save
