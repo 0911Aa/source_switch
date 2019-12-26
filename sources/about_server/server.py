@@ -32,7 +32,7 @@ class Server:
                     continue
                 devices_info = i.split('\t')
                 # print(devices_info)
-                if devices_info[1] == 'device':
+                if devices_info[1] == 'device' and devices_info[0] == "0000":
                     devices_list.append(devices_info[0])
             return devices_list
         else:
