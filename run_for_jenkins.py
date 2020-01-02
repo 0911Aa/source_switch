@@ -39,18 +39,32 @@ class Run:
 
     def get_batch_size(self):
         #['run_for_jenkins.py', '23']
+        print("参数---->",sys.argv)
+        print('---------->',type(sys.argv))
         testtimes = sys.argv[1]
+        stopTimes = sys.argv[-1]
         print("test_times",testtimes)
         config.test_times = int(testtimes)
+        if sys.argv[2] == 'on':
+            config.status = True
+        else:
+            config.status=False
+        config.stop_times = stopTimes
 
 if __name__ == "__main__":
     run = Run()
     run.get_batch_size()
     run.init_env()
-    pytest.main(["-s", project_path+"/src/testcases","--alluredir="+project_path+"/data","-m=P1"])
+    # pytest.main(["-s", project_path+"/src/testcases","--alluredir="+project_path+"/data","-m=P1"])
+    if config.status:
+        pytest.main(["-s",project_path+"/src/testcase","--alluredir="+project_path+"/data", "-m=P1","-x","--maxfail="+config.stop_times])
+    # "--reruns=2",
+    else:
+        pytest.main(["-s", project_path + "/src/testcase", "--alluredir=" + project_path + "/data", "-m=P1"])
+    # run.init_report()
     server = Server()
     server.kill_server()
-    run.init_report()
+    # run.init_report()
 
 #pytest -v 说明：可以输出用例更加详细的执行信息，比如用例所在的文件及用例名称等
 #pytest -s 说明：输入我们用例中的调式信息，比如print的打印信息等
